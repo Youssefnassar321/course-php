@@ -106,3 +106,74 @@ class Staff extends Person {
     }
 }
 ?>
+<?php
+
+abstract class Shape {
+    protected float $width;
+    protected float $height;
+
+    public function construct(float $width, float $height) {
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public abstract function getArea(): float;
+    public abstract function getPerimeter(): float;
+}
+
+class Circle extends Shape {
+    protected float $radius;
+
+    public function construct(float $radius) {
+        parent::__construct(0.0, 0.0);
+        $this->radius = $radius;
+    }
+
+    /
+     * @Override
+     */
+    public function getArea(): float {
+        return pi() * $this->radius * $this->radius;
+    }
+
+    /
+     * @Override
+     */
+    public function getPerimeter(): float {
+        return 2 * pi() * $this->radius;
+    }
+}
+
+class Rectangle extends Shape {
+
+    /
+     * @Override
+     */
+    public function getArea(): float {
+        return $this->width * $this->height;
+    }
+
+    /
+     * @Override
+     */
+    public function getPerimeter(): float {
+        return 2 * ($this->width + $this->height);
+    }
+}
+
+class Square extends Rectangle {
+
+    /
+     * @Override
+     */
+    public function getArea(): float {
+        return $this->width * $this->width;
+    }
+
+    /
+     * @Override
+     */
+    public function getPerimeter(): float {
+        return 4 * $this->width;
+    }
+}
